@@ -8,3 +8,6 @@ git pull//抓取内容
 git clone git@github.com:fushaoqing/Algorithms4.git//克隆远程库
 git reset --hard "HEAD^"//返回上一个版本
 touch .gitignore //在文件夹就生成了一个“.gitignore”文件
+
+git diff HEAD -- "文件路径//查看工作区和版本库里面最新版本的区别
+git rm --cached "文件路径"//删除缓存中的文件
