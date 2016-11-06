@@ -15,7 +15,7 @@ public class TwoSumFast {
 		return cnt;
 	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		//命令行参数"F:\算法\Algorithms4\1-4-AnalysisOfAlgorithms\src\1Kints.txt"
 		int[] test=In.readInts(args[0]);
 		System.out.println(TwoSumFast.count(test));
 	}
