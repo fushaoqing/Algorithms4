@@ -32,24 +32,28 @@ public class StaticSETofInts {
 		return rank(key)!=-1;//若=-1，返回false,表示不包含；若！=-1，返回true，表示包含
 	}
 	
-	public int howmany(int key){
+	public int howmany(int key){//找数组中出给定键出现的次数
+		/*从mid开始向两边逐个判断，遇到!=key或者左边界=0，右边界=N-1停止*/
 		int cnt=0;
 		int mid=rank(key);
-		if(mid>=0) return cnt;
+		if(mid<=0) return cnt;
 		else cnt++;
 		int l=mid;
 		int r=mid;
 		while(true){
 			if(l==0||whiteList[--l]!=key){
 				if(whiteList[++r]==key) cnt++;
+				else return cnt;
 			}
 			else if(r==N||whiteList[++r]!=key){
 				if(whiteList[--l]==key) cnt++;
+				else return cnt;
 			}
 			else{
 				cnt+=2;
 			}
-			if(l==0&&r==N) break;
+			//System.out.println(r);
+			if(l==0&&r==N-1) break;
 		}
 		return cnt;
 	}
@@ -59,10 +63,16 @@ public class StaticSETofInts {
 		/*int a=3;
 		if(--a>3) System.out.println(1);
 		else System.out.println(a);*/
-		int[] whiteList={7,10,10,10,9,20};
-		StaticSETofInts s=new StaticSETofInts(whiteList);
-		Arrays.sort(whiteList);
-		StdOut. println(s.howmany(10));                     
-			
+		int[] a=null;
+		StaticSETofInts s=null;
+		for(int n=2000;true;n+=n){
+			a=new int[n];
+			for(int i=0;i<n;i++) a[i]=10;
+			s=new StaticSETofInts(a);
+			StopWatch w=new StopWatch();
+			Arrays.sort(a);
+			s.howmany(10);
+			System.out.printf("%5.2f %5.2f %5.2f\n",Math.log(n),w.elapsedTime(),w.elapsedTime()/Math.log(n));
 		}
-	}
+	}				
+}

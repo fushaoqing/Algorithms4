@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import edu.princeton.cs.algs4.*;
 /*找出数组中相同的2整数元祖*/
-public class ex_1_4_8 {
+public class Ex_1_4_8 {
 	public static int count1(int[] a){
 		int N=a.length;
 		int cnt=0;
@@ -27,6 +27,6 @@ public class ex_1_4_8 {
 		//命令行参数"F:\算法\Algorithms4\1-4-AnalysisOfAlgorithms\src\1Kints.txt"
 		int[] test=In.readInts(args[0]);
 		
-		System.out.println(ex_1_4_8.count2(test));
+		System.out.println(Ex_1_4_8.count2(test));
 	}
 }
