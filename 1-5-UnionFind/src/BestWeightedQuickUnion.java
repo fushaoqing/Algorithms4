@@ -1,12 +1,13 @@
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
-public class WeightedQuickUnion {
-    /*加权归并,当两棵树大小相等时为最坏情况*/
+
+public class BestWeightedQuickUnion {
+      /*压缩路径的加权归并，尽可能将触点链接到根触点上，降低树的深度*/
 	private int[] id;//数组id用于存放代表分量的标识符，id的索引代表触点号
 	private int[] sz;//数组sz存储各个根节点所对应的大小
 	private int cnt;
 
-	public WeightedQuickUnion(int N){
+	public BestWeightedQuickUnion(int N){
 		cnt=N;
 		id=new int[N];
 		sz=new int[N];
@@ -19,8 +20,15 @@ public class WeightedQuickUnion {
 	}
 	
 	public int find(int p){
+		/*增加一个循环，将触点P其上的所以触点都链接到根触点上*/
 		int temp=p;
 		while(p!=id[p]) p=id[p];
+		
+		while(temp!=p){
+			int tempid=id[temp];//先取出temp的链接
+			id[temp]=p;//将触点temp直接链接到根触点上
+			temp=tempid;//再从其上一个触点开始，继续将下一个触点链接到根触点上，直到到达根触点为止
+		}
 		return p;//返回根触点的索引
 	}
 	
@@ -40,7 +48,7 @@ public class WeightedQuickUnion {
 	
 	public static void main(String[] args) {
 		int N=StdIn.readInt();
-		WeightedQuickUnion uf=new WeightedQuickUnion(N);
+		BestWeightedQuickUnion uf=new BestWeightedQuickUnion(N);
 		while(!StdIn.isEmpty()){
 			int p=StdIn.readInt();
 			int q=StdIn.readInt();
@@ -51,4 +59,5 @@ public class WeightedQuickUnion {
 
 		StdOut.println(uf.cnt+" components");
 	}
+	
 }
