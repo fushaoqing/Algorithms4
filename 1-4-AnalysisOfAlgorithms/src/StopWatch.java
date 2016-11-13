@@ -1,3 +1,4 @@
+import edu.princeton.cs.algs4.*;
 public class StopWatch {
 	private final long start;
 	public StopWatch(){
