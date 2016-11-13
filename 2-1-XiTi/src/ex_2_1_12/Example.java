@@ -1,3 +1,4 @@
+package ex_2_1_12;
 
 public class Example {
 
@@ -23,11 +24,11 @@ public class Example {
 		return true;
 	}
 	
-	public static void main(String[] args){
-		Double[] slist={7.0,8.0,9.0};
+	/*public static void main(Double[] args){
+		Double[] slist={"a","b","c"};
 		Example.exch(slist, 0, 1);
 		System.out.println(Example.less(slist[0],slist[1]));
 		System.out.println(Example.isSorted(slist));
 		Example.show(slist);
-	}
+	}*/
 }
