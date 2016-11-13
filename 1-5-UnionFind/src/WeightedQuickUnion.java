@@ -1,5 +1,6 @@
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
+import java.util.*;
 public class WeightedQuickUnion {
     /*加权归并,当两棵树大小相等时为最坏情况*/
 	private int[] id;//数组id用于存放代表分量的标识符，id的索引代表触点号
@@ -48,7 +49,6 @@ public class WeightedQuickUnion {
 			uf.union(p, q);
 			StdOut.println(p+"  "+q);//打印连接
 		}
-
 		StdOut.println(uf.cnt+" components");
-	}
+	}	
 }
