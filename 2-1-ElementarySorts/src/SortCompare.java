@@ -10,6 +10,7 @@ public class SortCompare {
 		if(arg.equals("Bubble"))  	 Selection.sort(a);
 		if(arg.equals("Insertion"))  Insertion.sort(a);
 		if(arg.equals("Shell"))  	 Shell.sort(a);
+		if(arg.equals("MergeBU")) 	 MergeBU.sort(a);
 		return s.elapsedTime();
 		//System.out.println(arg0);
 	}
@@ -32,16 +33,19 @@ public class SortCompare {
 		String arg2="Bubble";
 		String arg3="Insertion";
 		String arg4="Shell";
-		int N=1000;
+		String arg5="MergeBU";
+		int N=4000;
 		int T=100;
 		double t1=SortCompare.timeRandomInputs(arg1, N, T);
 		double t2=SortCompare.timeRandomInputs(arg2, N, T);
 		double t3=SortCompare.timeRandomInputs(arg3, N, T);
 		double t4=SortCompare.timeRandomInputs(arg4, N, T);
+		double t5=SortCompare.timeRandomInputs(arg5, N, T);
 		StdOut.printf("%.3f\n", t1);
 		StdOut.printf("%.3f\n", t2);
 		StdOut.printf("%.3f\n", t3);
 		StdOut.printf("%.3f\n", t4);
+		StdOut.printf("%.3f\n", t5);
 	}
 	
 }
