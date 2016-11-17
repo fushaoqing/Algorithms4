@@ -1,7 +1,10 @@
-package ex_2_3_5;
+package ex_2_3_7;
 import edu.princeton.cs.algs4.*;
-public class QuickCount {
-	static int count=0;
+public class Quick {
+	private static int num_0;
+	private static int num_1;
+	private static int num_2;
+	/*将数组切分成2段，<=v，>=v*/
 	public static void exch(double[] a,int i,int j){
 		Double temp=a[i];
 		a[i]=a[j];
@@ -20,6 +23,9 @@ public class QuickCount {
 	}
 	
 	public static void sort(double[] a,int lo,int hi){
+		if((hi-lo+1)==0) 		num_0++;
+		else if((hi-lo+1)==1) 	num_1++;
+		else if((hi-lo+1)==2)	num_2++;
 		if(hi<=lo) return;
  		int r=partition(a,lo,hi);
  		/*对左边子数组和右边子数组分别再进行快速排序*/
@@ -33,9 +39,8 @@ public class QuickCount {
 			int l=lo;
 			int r=hi+1;
 			while(true){
-				while(a[++l]<v) {count++;if(l==hi) break;}//从右向左找到大于v的数为止
-				while(a[--r]>v) {count++;if(r==lo) break;}//从左向右找到小于v的数为止
-				count++;
+				while(a[++l]<v) if(l==hi) break;//从右向左找到大于v的数为止
+				while(a[--r]>v) if(r==lo) break;//从左向右找到小于v的数为止
 				if(l>=r) break;
 				exch(a,l,r);
 			}
@@ -44,9 +49,15 @@ public class QuickCount {
 	}
 	
 	public static void main(String[] args) {
-		double[] s={1.0,6.3,4.5,2.1,3.5,2.4};
-		QuickCount.sort(s);
-		QuickCount.show(s);
-		System.out.println(QuickCount.count);
+		int n=100;
+		double[] test=new double[n];
+		for(int i=0;i<n;i++){
+			test[i]=StdRandom.uniform();
+		}
+		Quick.sort(test);
+		//Quick.show(s);
+		System.out.println(Quick.num_0);
+		System.out.println(Quick.num_1);
+		System.out.println(Quick.num_2);
 	}
 }
