@@ -21,7 +21,7 @@ public class QuickTwo {
 			if(a[i]<a[0]) {
 				exch(a,0,i);
 				break;
-			}
+			}else if(a[i]>a[0]) break;
 			i++;
 		}
 		sort(a,0,a.length-1);
@@ -48,7 +48,7 @@ public class QuickTwo {
 	}
 	
 	public static void main(String[] args) {
-		int n=1000;
+		int n=1000000;
 		double[] test=new double[n];
 		for(int i=0;i<n;i++){
 			if(StdRandom.bernoulli(0.5)) test[i]=1;
