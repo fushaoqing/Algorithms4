@@ -32,8 +32,8 @@ public class Quick {
 			int l=lo;
 			int r=hi+1;
 			while(true){
-				while(a[++l]<v) if(l==hi) break;//从右向左找到大于v的数为止
-				while(a[--r]>v) if(r==lo) break;//从左向右找到小于v的数为止
+				while(a[++l]<v) if(l==hi) break;//从左向右找到大于v的数为止
+				while(a[--r]>v) if(r==lo) break;//从右向左找到小于v的数为止
 				if(l>=r) break;
 				exch(a,l,r);
 			}
