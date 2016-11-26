@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 import edu.princeton.cs.algs4.StdRandom;
 
 public class Median {
@@ -20,9 +22,11 @@ public class Median {
 	}
 	
 	public static int select(int[] a,int k){//返回数组中第k大的数,k从0开始
-		StdRandom.shuffle(a);
+		//StdRandom.shuffle(a);
 		int lo=0;
 		int hi=a.length-1;
+		k=k-1;
+		if(k<0||k>hi) return -1;
 		while(hi>lo){
 			int j=partition(a,lo,hi);
 			if(j==k) return a[k];
@@ -33,12 +37,18 @@ public class Median {
 		return a[k];
 	}
 	public static void main(String[] args) {
-		int[] a={1,3,9,5,8};
+		/*int[] a={1,3,9,5,8};
 		System.out.println(select(a,1));
 		for(int n=0;n<a.length;n++)
-			System.out.println(a[n]);
-		
-
+			System.out.println(a[n]);*/
+		Scanner in=new Scanner(System.in);
+		int N=in.nextInt();
+		int k=in.nextInt();
+		int[] a=new int[N];
+		for(int i=0;i<N;i++){
+			a[i]=in.nextInt();
+		}
+		System.out.println(Median.select(a, k));
 	}
 
 }

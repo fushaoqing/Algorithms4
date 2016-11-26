@@ -50,7 +50,11 @@ public class SequentSearchST<Key extends Comparable<Key>,Value> {
 		}
 		
 		if(first.key.equals(key))  {
+			Node old=first;
 			first=first.next;
+			old.next=null;
+			old=null;
+			
 			n--;
 		}
 	}
