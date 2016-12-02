@@ -54,8 +54,9 @@ public class RedBlackTree<Key extends Comparable<Key>,Value>{
 	}
 	
 	public void flipColors(Node h){//当左右两边都为红链接时，将两边链接改为黑色，将根链接改为红色
-		h.color=RED;
-		h.right.color=BLACK;
+		h.color=!h.color;
+		h.right.color=!h.right.color;
+		h.left.color=!h.left.color;
 	}
 	
 	public Key min(){
@@ -140,10 +141,39 @@ public class RedBlackTree<Key extends Comparable<Key>,Value>{
 		if(cmphi>0) keys(x.right,q,lo,hi);
 	}
 	
-	public void colorFlips(Node h){
-		h.color=!h.color;
-		h.right.color=!h.right.color;
-		h.left.color=!h.left.color;
+	public void moveRedLeft(Node h){
+		flipColors(h);//将三个2-节点合成一个4-节点
+		if(isRed(h.right.left)){//若右子节点为4-节点或3-节点，就借一个过来
+			h.right=rotateRight(h.right);
+			h=rotateLeft(h);
+			flipColors(h);//将原先的4-节点还原
+		}
+	}
+	
+	 private Node balance(Node h) {
+        // assert (h != null);
+        if (isRed(h.right))                      h = rotateLeft(h);
+        if (isRed(h.left) && isRed(h.left.left)) h = rotateRight(h);
+        if (isRed(h.left) && isRed(h.right))     flipColors(h);
+        h.N = size(h.left) + size(h.right) + 1;
+        return h;
+    }
+	 
+	 public boolean isEmpty() {
+	        return root == null;//root为null,说明整个数树为空
+	   }
+	public void deleteMin(){
+		if(!isRed(root.right)&&!isRed(root.left))
+			root.color=RED;
+		root=deleteMin(root);
+		if (!isEmpty()) root.color = BLACK;
+	}
+	public Node deleteMin(Node h){
+		if(h.left==null) return null;
+		else if(!isRed(h.left)&&!isRed(h.left.left))
+				moveRedLeft(h);
+		h.left=deleteMin(h.left);
+		return balance(h);
 	}
 	
 	public static void main(String[] args) {
@@ -151,8 +181,10 @@ public class RedBlackTree<Key extends Comparable<Key>,Value>{
 		rbt.put("abc", 1);
 		rbt.put("ad", 3);
 		rbt.put("qq", 4);
+		//StdOut.println(rbt.isEmpty());
+		rbt.deleteMin();
 		StdOut.println(rbt.contain("qq"));
-		StdOut.println(rbt.floor("ac").key);
+		StdOut.println(rbt.floor("ad").key);
 		StdOut.println(rbt.size());
 		for(String word:rbt.keys()){
 			StdOut.println(word+" "+rbt.get(word));
