@@ -140,6 +140,11 @@ public class RedBlackTree<Key extends Comparable<Key>,Value>{
 		if(cmphi>0) keys(x.right,q,lo,hi);
 	}
 	
+	public void colorFlips(Node h){
+		h.color=!h.color;
+		h.right.color=!h.right.color;
+		h.left.color=!h.left.color;
+	}
 	
 	public static void main(String[] args) {
 		RedBlackTree<String,Integer> rbt=new RedBlackTree<String,Integer>();
@@ -152,7 +157,6 @@ public class RedBlackTree<Key extends Comparable<Key>,Value>{
 		for(String word:rbt.keys()){
 			StdOut.println(word+" "+rbt.get(word));
 		}
-
 	}
 
 }
