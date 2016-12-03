@@ -95,7 +95,7 @@ public class LinearProbingHashST<Key,Value> {
 		lst.put("ad", 3);
 		lst.put("qq", 4);
 		lst.delete("ad");
-		System.out.println(lst.contain("ad"));
+		System.out.println(lst.contain("qq"));
 		System.out.println(lst.N);
 		for(String word:lst.keys()){
 			StdOut.println(word+" "+lst.get(word));

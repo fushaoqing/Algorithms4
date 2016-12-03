@@ -39,23 +39,16 @@ public class SequentSearchST<Key extends Comparable<Key>,Value> {
 	}
 	
 	public void delete(Key key){
-		Node f=first;
-		while(f.next.next!=null){
-			f=f.next;//到达最后一个结点
-		}
-		if(f.next.key.equals(key)) {f.next=null;n--;return;}
-	
-		for(Node x=first;x.next!=null;x=x.next){//最多遍历至倒数第二个Node上
-			if(x.next.key.equals(key)) {x.next=x.next.next;n--;return;}
-		}
-		
-		if(first.key.equals(key))  {
-			Node old=first;
-			first=first.next;
-			old.next=null;
-			old=null;
+		first=delete(first,key);
+	}
+	public Node delete(Node x,Key key){
+		if(x==null) return null;
+		if(key.equals(x.key)){
 			n--;
+			return x.next;
 		}
+		x.next=delete(x.next,key);
+		return x;
 	}
 	
 	public Iterable<Key> keys(){

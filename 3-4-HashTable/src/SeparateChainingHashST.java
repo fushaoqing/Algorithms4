@@ -28,6 +28,16 @@ public class SeparateChainingHashST<Key extends Comparable<Key>,Value> {
 		N++;
 	}
 	
+	public boolean contain(Key key){
+		return get(key)!=null;
+	}
+	
+	public void delete(Key key){
+		if(!contain(key)) return;
+		int i=hash(key);
+		st[i].delete(key);
+	}
+	
 	public Iterable<Key> keys(){
 		Queue<Key> queue = new Queue<Key>();
 		for(int i=0;i<M;i++){
@@ -44,8 +54,8 @@ public class SeparateChainingHashST<Key extends Comparable<Key>,Value> {
 		sct.put("abc", 1);
 		sct.put("ad", 3);
 		sct.put("qq", 4);
-		//sct.delete("ad");
-		//StdOut.println(sct.contain("qq"));
+		sct.delete("ad");
+		StdOut.println(sct.contain("qq"));
 		StdOut.println(sct.N);
 		for(String word:sct.keys()){
 			StdOut.println(word+" "+sct.get(word));
