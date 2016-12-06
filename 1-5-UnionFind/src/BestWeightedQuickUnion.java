@@ -24,7 +24,7 @@ public class BestWeightedQuickUnion {
 		int temp=p;
 		while(p!=id[p]) p=id[p];
 		
-		while(temp!=p){
+		while(temp!=p){//当前查找点不为根节点
 			int tempid=id[temp];//先取出temp的链接
 			id[temp]=p;//将触点temp直接链接到根触点上
 			temp=tempid;//再从其上一个触点开始，继续将下一个触点链接到根触点上，直到到达根触点为止
@@ -45,6 +45,9 @@ public class BestWeightedQuickUnion {
 		return find(p)==find(q);
 	}
 	
+	public int count(){//返回union后的分量的总数
+		return cnt;
+	}
 	
 	public static void main(String[] args) {
 		int N=StdIn.readInt();

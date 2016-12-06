@@ -19,6 +19,9 @@ public class LinearProbingHashST<Key,Value> {
 		return (key.hashCode()&0x7fffffff)%M;//将对象的hashCode()转换为数组索引
 	}
 	
+	public int size(){
+		return N;
+	}
 	public void resize(int cap){
 		LinearProbingHashST<Key,Value> t;
 		t=new LinearProbingHashST<Key,Value>(cap);
