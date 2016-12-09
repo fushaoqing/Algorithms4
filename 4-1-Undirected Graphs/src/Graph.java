@@ -33,7 +33,13 @@ public class Graph {
 	public Iterable<Integer> adj(int v){
 		return adj[v];
 	}
+	public int V(){
+		return V;
+	}
 	
+	public int E(){
+		return E;
+	}
 	public String toString(){
 		String s=V+" vertices "+E+" edges\n";
 		for(int v=0;v<V;v++){
@@ -47,9 +53,24 @@ public class Graph {
 	
 	public static void main(String[] args) {
 		Graph G=new Graph(new In (args[0]));
-		//int num=Integer.parseInt(args[1]);
+		int s=Integer.parseInt(args[1]);//输入顶点
 		System.out.println(G);
-
+		//DepthFirstPath dfp=new DepthFirstPath(G,s);
+		BreadFirstPath bfp=new BreadFirstPath(G,s);
+		for(int v=0;v<G.V();v++){
+			if(bfp.hasPath(v))
+				System.out.print(v+" ");
+		}
+		System.out.println("");
+		
+		if(bfp.count()!=G.V())//若任意两点都是连通的，那么图被称作连通图，则该图是连通的
+			System.out.print("Not");
+		System.out.print(" Connected"+"\n");
+		System.out.println(bfp.count());
+		
+		for(int p:bfp.pathTo(2)){
+			if(p==s) System.out.print(p);
+			else System.out.print("-"+p);
+		}	
 	}
-
 }
