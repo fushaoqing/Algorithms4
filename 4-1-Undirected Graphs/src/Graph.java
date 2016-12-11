@@ -55,7 +55,7 @@ public class Graph {
 		Graph G=new Graph(new In (args[0]));
 		int s=Integer.parseInt(args[1]);//输入顶点
 		System.out.println(G);
-		//DepthFirstPath dfp=new DepthFirstPath(G,s);
+		DepthFirstPath dfp=new DepthFirstPath(G,s);
 		BreadFirstPath bfp=new BreadFirstPath(G,s);
 		for(int v=0;v<G.V();v++){
 			if(bfp.hasPath(v))
@@ -68,9 +68,9 @@ public class Graph {
 		System.out.print(" Connected"+"\n");
 		System.out.println(bfp.count());
 		
-		for(int p:bfp.pathTo(2)){
+		/*for(int p:bfp.pathTo(3)){
 			if(p==s) System.out.print(p);
 			else System.out.print("-"+p);
-		}	
+		}	*/
 	}
 }

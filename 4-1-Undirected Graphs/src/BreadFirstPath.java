@@ -1,4 +1,5 @@
 import edu.princeton.cs.algs4.Queue;
+
 import edu.princeton.cs.algs4.Stack;
 
 public class BreadFirstPath {
@@ -10,18 +11,18 @@ public class BreadFirstPath {
 	
 	public BreadFirstPath(Graph G,int s){
 		marked=new boolean[G.V()];
-		edgeTo=new int[G.E()];
+		edgeTo=new int[G.V()];
 		this.s=s;
 		bfs(G,s);
 	}
 	
 	public void bfs(Graph G,int v){
 		Queue<Integer> queue=new Queue<Integer>();
-		marked[v]=true;
+		marked[v]=true;//标记起点
 		queue.enqueue(v);
 		while(!queue.isEmpty()){
 			int s=queue.dequeue();
-			for(int w:G.adj(v)){
+			for(int w:G.adj(s)){
 				if(!marked[w]){
 					marked[w]=true;
 					count++;
