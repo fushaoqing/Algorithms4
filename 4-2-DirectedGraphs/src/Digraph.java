@@ -44,7 +44,7 @@ public class Digraph {
 		Digraph d=new Digraph(V);
 		for(int v=0;v<V;v++)
 			for(int w:adj(v)){
-				addEdge(w,v);//反向添加
+				d.addEdge(w,v);//反向添加到反图中
 			}
 		return d;	
 	}
@@ -59,11 +59,9 @@ public class Digraph {
 		}
 		return s;
 	}
-	
 	public static void main(String[] args) {
 		Digraph d=new Digraph(new In(args[0]));
 		System.out.print(d);
-
 	}
 
 }
