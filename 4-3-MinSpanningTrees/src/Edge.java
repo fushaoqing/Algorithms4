@@ -1,5 +1,5 @@
 
-public class Edge {
+public class Edge implements Comparable<Edge> {
 
 	private int v;
 	private int w;

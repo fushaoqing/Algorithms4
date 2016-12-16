@@ -27,8 +27,8 @@ public class IndexMinPQ<Key extends Comparable<Key>> {
 	public void insert(int i,Key key){
 		if(contain(i)) throw new IllegalArgumentException("index is already in the priority queue");
 		n++;
-		pq[n]=i;
-		qp[i]=n;
+		pq[n]=i;//存储key的索引
+		qp[i]=n;//用来判断对应key的值是否已存在队列中，不存在的qp[i]=-1
 		keys[i]=key;
 		swim(i);
 	}
