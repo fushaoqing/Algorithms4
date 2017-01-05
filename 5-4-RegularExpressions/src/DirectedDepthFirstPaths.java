@@ -13,12 +13,20 @@ public class DirectedDepthFirstPaths {
 		this.s=s;
 		dfs(G,s);
 	}
+	
+	public DirectedDepthFirstPaths(Digraph G,Iterable<Integer> sources){//深度优先搜索需要一幅图和一个顶点
+		marked=new boolean[G.V()];
+		for(int v:sources)
+			if(!marked[v])
+				dfs(G,v);//多点可达性
+	}
+	
 	public void dfs(Digraph G,int v){
 		marked[v]=true;
 		count++;
 		for(int w:G.adj(v)){
 			if(!marked[w]){
-				edgeTo[w]=v;
+				//edgeTo[w]=v;
 				dfs(G,w);
 			}	
 		}
@@ -52,5 +60,4 @@ public class DirectedDepthFirstPaths {
         }
         System.out.println("");
 	}
-
 }
