@@ -53,7 +53,7 @@ public class NFA {
 			dfp=new DirectedDepthFirstPaths(G,match);
 			for(int v=0;v<G.V();v++)
 				if(dfp.hasPath(v))
-					pc.add(v);//非匹配转换
+					pc.add(v);//匹配了部分字符后(match),所有非匹配转换所能到达的点
 		}
 		
 		for(int v:pc)

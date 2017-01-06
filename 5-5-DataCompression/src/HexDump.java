@@ -1,0 +1,26 @@
+import edu.princeton.cs.algs4.BinaryStdIn;
+import edu.princeton.cs.algs4.StdOut;
+
+public class HexDump {
+
+	public static void main(String[] args) {
+		int BYTES_PER_LINE = 16;
+        if (args.length == 1) {
+            BYTES_PER_LINE = Integer.parseInt(args[0]);
+        }
+
+        int i;
+        for (i = 0; !BinaryStdIn.isEmpty(); i++) {//按char值(每8位一读），再转化为16进制
+            if (BYTES_PER_LINE == 0) { BinaryStdIn.readChar(); continue; }
+            if (i == 0) StdOut.printf("");
+            else if (i % BYTES_PER_LINE == 0) StdOut.printf("\n", i);
+            else StdOut.print(" ");
+            char c = BinaryStdIn.readChar();
+            System.out.println(c);
+            StdOut.printf("%02x", c & 0xff);//& 0xff表示取字符的低八位
+        }
+        if (BYTES_PER_LINE != 0) StdOut.println();
+        StdOut.println((i*8) + " bits");
+	}
+
+}
