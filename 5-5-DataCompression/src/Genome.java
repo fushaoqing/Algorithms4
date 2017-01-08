@@ -3,15 +3,15 @@ import edu.princeton.cs.algs4.BinaryStdIn;
 import edu.princeton.cs.algs4.BinaryStdOut;
 
 public class Genome {
-
+	/*ATAGATGCATAGCGCATAGCTAGATGTGCTAGC标准输出上看不到比特流*/
 	public static void compress(){//压缩
 		Alphabet DNA=new Alphabet("ACTG");
 		String s=BinaryStdIn.readString();//读取字符串流
 		int N=s.length();
 		BinaryStdOut.write(N);
 		for(int i=0;i<N;i++){
-			int d=DNA.toIndex(s.charAt(i));
-			BinaryStdOut.write(d,DNA.lgR());//每次输出前两位
+			int d=DNA.toIndex(s.charAt(i));//将字符转换为字母表中的索引
+			BinaryStdOut.write(d,DNA.lgR());//每次输出bits前两位
 		}
 		BinaryStdOut.close();
 	}
@@ -28,8 +28,8 @@ public class Genome {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		if(args[0]=="-") compress();
+		if(args[0]=="+") expand();
 	}
 
 }
