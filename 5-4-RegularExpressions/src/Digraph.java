@@ -1,3 +1,4 @@
+import edu.princeton.cs.algs4.Alphabet;
 import edu.princeton.cs.algs4.Bag;
 import edu.princeton.cs.algs4.In;
 
@@ -63,5 +64,4 @@ public class Digraph {
 		Digraph d=new Digraph(new In(args[0]));
 		System.out.print(d);
 	}
-
 }
