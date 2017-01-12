@@ -15,7 +15,7 @@ public class Quick3Way {
 	}
 	
 	public static void sort(double[] a){
-		StdRandom.shuffle(a);
+		//StdRandom.shuffle(a);
 		sort(a,0,a.length-1);
 	}
 	
@@ -26,6 +26,7 @@ public class Quick3Way {
 		int i=lo+1;
 		double v=a[lo];
 		while(i<=gt){
+			//Quick3Way.show(a);
 			if(a[i]<v) 		exch(a,lt++,i++);//将小于v的数移到v的前面
 			else if(a[i]>v) exch(a,i,gt--);//将大于v的数移到v的后面
 			else      		i++; //等于v的数保留原位
@@ -37,7 +38,10 @@ public class Quick3Way {
 	
 	public static void main(String[] args) {
 		double[] s={1.0,6.3,4.5,2.1,2.4};
-		Quick3Way.sort(s);
-		Quick3Way.show(s);
+		double[] l={7.0,8.0,6.0,11.0,3.0,3.0,5.0};
+		//Quick3Way.sort(s);
+		//Quick3Way.show(s);
+		Quick3Way.sort(l);
+		Quick3Way.show(l);
 	}
 }
